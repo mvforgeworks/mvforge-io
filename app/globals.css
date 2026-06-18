@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ==================== CYBER THEME ==================== */
+.cyber {
+  --bg: #0a0a0c;
+  --surface: #111317;
+  --border: #2a2e38;
+  --neon-teal: #00f9ff;
+  --neon-blue: #00b4ff;
+  --neon-purple: #7b5cff;
+  --text: #e5e7eb;
+  --text-muted: #8d9199;
+}
+
+.cyber body,
+.cyber .min-h-screen {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Stealth / Lower Neon Mode */
+.stealth {
+  --bg: #0a0a0c;
+  --surface: #111317;
+  --border: #2a2e38;
+  --neon-teal: #00b4ff;
+  --neon-blue: #7b5cff;
+  --neon-purple: #6c63ff;
+  --text: #d1d1d3;
+  --text-muted: #7a7e88;
+}
+
+/* Base */
+body {
+  font-family: var(--font-sans);
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(17, 19, 23, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--neon-teal);
+  box-shadow: 0 0 0 1px rgba(0, 249, 255, 0.1);
+}
+
+/* Terminal Header (used on service cards) */
+.terminal-header {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  background: #0a0a0c;
+  color: var(--neon-teal);
+  padding: 9px 32px;
+  border-bottom: 1px solid var(--border);
+  border-radius: 16px 16px 0 0;
+  margin-bottom: 0;
+}
+
+/* Neon Button */
+.neon-btn {
+  position: relative;
+  font-family: var(--font-mono);
+  transition: all 0.2s ease;
+  border-radius: 10px;
+}
+
+.neon-btn:hover {
+  box-shadow: 
+    0 0 6px var(--neon-teal),
+    0 0 18px var(--neon-teal);
+}
+
+/* Pulsing neon glow */
+@keyframes neon-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 6px var(--neon-teal), 0 0 18px rgba(0, 249, 255, 0.4); 
+  }
+  50% { 
+    box-shadow: 0 0 12px var(--neon-teal), 0 0 30px rgba(0, 249, 255, 0.6); 
+  }
+}
+
+.pulse {
+  animation: neon-pulse 3s infinite ease-in-out;
+}
+
+/* Scanline effect */
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: -120%;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to bottom, transparent, var(--neon-teal), transparent);
+  opacity: 0.15;
+  animation: scan-move 3.6s linear infinite;
+}
+
+@keyframes scan-move {
+  100% { top: 350%; }
+}
+
+/* Logo pulse */
+.forge-logo {
+  transition: filter 0.3s ease;
+}
+
+.forge-logo:hover {
+  filter: brightness(1.2) saturate(1.4);
+}
+
+/* Nav items */
+.nav-link {
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--neon-teal);
+}
+
+/* Contact link hover */
+.contact-link:hover {
+  text-shadow: 0 0 8px var(--neon-teal);
+  color: var(--neon-teal);
+}
+
+/* Responsive touch improvements */
+@media (max-width: 640px) {
+  .glass-card {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  .neon-btn {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+/* Accessibility focus states */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--neon-teal);
+  outline-offset: 3px;
+}
