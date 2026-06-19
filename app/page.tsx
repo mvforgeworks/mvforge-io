@@ -222,6 +222,10 @@ export default function CyberWarriorForge() {
       <footer className="border-t border-white/10 py-8">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-y-2 text-xs text-[#6e727b]">
           <div>© {new Date().getFullYear()} CyberWarrior Forge • MVForge</div>
+          <div className="flex gap-4">
+            <a href="/privacy" className="hover:text-white">Privacy Policy</a>
+            <a href="/terms" className="hover:text-white">Terms of Service</a>
+          </div>
           <div>Self-ownership through technical mastery.</div>
         </div>
       </footer>
